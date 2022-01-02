@@ -1,0 +1,27 @@
+{
+  "name": "landing-type-gulp",
+  "version": "1.0.0",
+  "description": "landing type for gulps projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LePtiDev/landing-type-gulp.git"
+  },
+  "keywords": [
+    "gulp",
+    "landing-type",
+    "landing"
+  ],
+  "author": "Quentin Guerrier",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LePtiDev/landing-type-gulp/issues"
+  },
+  "homepage": "https://github.com/LePtiDev/landing-type-gulp#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
