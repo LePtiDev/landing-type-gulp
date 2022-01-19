@@ -4,7 +4,9 @@
   "description": "landing type for gulps projects",
   "main": "./src/app.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "watch": "gulp css && gulp watch",
+    "serve": "php -S 127.0.0.1:8000"
   },
   "repository": {
     "type": "git",
@@ -22,13 +24,18 @@
   },
   "homepage": "https://github.com/LePtiDev/landing-type-gulp#readme",
   "devDependencies": {
+    "browser-sync": "^2.27.7",
+    "fs": "^0.0.1-security",
+    "grunt-php": "^3.0.0",
     "gulp": "^4.0.2",
-    "gulp-ejs": "^5.1.0",
+    "gulp-connect-php": "^1.0.3",
+    "gulp-minify-css": "^1.2.4",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
     "sass": "^1.47.0"
   },
   "dependencies": {
-    "fs": "^0.0.1-security"
+    "gulp-livereload": "^4.0.2",
+    "gulp-webserver": "^0.9.1"
   }
 }

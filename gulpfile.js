@@ -1,50 +1,24 @@
 // Gulp
-const { src, dest } = require("gulp");
+const { src, dest, watch } = require("gulp");
 
-// scss
+// Scss
 const sass = require('gulp-sass')(require('sass'));
-
-// html 
-const ejs = require("gulp-ejs");
+const minifyCSS = require('gulp-minify-css');
 const rename = require("gulp-rename");
 
-// files
-const fs = require('fs');
-
-// Global variables
-const path = './src/';
-const dirBuildName = "dist"
-
-// Generate CSS form SCSS
+// Generate CSS from SCSS
 function generateCSS(cb) {
-  src(path + 'scss/init.scss')
+  src('./src/scss/init.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(rename({
-      basename: "app"
-    }))
-    .pipe(dest(dirBuildName))
+    .pipe(minifyCSS())
+    .pipe(rename('app.min.css'))
+    .pipe(dest("./src/assets"))
   cb();
 }
 
-// Generate HTML 
-function generateHTML(cb){
-  fs.readdir(path + 'views/', (err, files) => {
-    files.forEach(file => {
-      src(path + 'views/' + file)
-      .pipe(ejs({
-        global: {
-          cssLink: "app.css",
-        },
-        data: require(path + "functions/" + file.substr(0, file.lastIndexOf(".")) + ".js")
-      }))
-      .pipe(rename({
-        extname: ".html"
-      }))
-      .pipe(dest("dist"));
-    });
-  });
-  cb();
+function watchFiles(cb) {
+  watch('./src/scss/**/*.scss', generateCSS);
 }
 
 exports.css = generateCSS;
-exports.html = generateHTML;
+exports.watch = watchFiles;
